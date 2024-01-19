@@ -16,18 +16,24 @@ nav {
   width: 100%;
   flex-wrap: nowrap;
 }
+.logo {
+  font-size: 2rem;
+  font-weight: bold;
+  color: var(--primary);
+  margin-left: 20px;
+}
 nav ul {
   display: flex;
   flex-wrap: nowrap;
-  margin: 0;
+  margin: 0 10px 0 0;
   padding: 0;
 }
 nav li {
   list-style: none;
   text-decoration: none;
-  margin-right: 10px;
   padding: 0;
   font-size: 1.3rem;
+  margin-right: 10px;
 }
 .navLink {
   color: white;
@@ -36,12 +42,15 @@ nav li {
   border-radius: 5px;
   text-decoration: none;
 }
-.navLink:hover {
+.active {
+  background-color: var(--primary);
+}
+.navLink:not(.active):hover {
   color: var(--primary);
 }
 nav form {
   display: flex;
-  margin-right: 10px;
+  margin: 0 10px;
 }
 nav form button {
   padding: 3px 10px;
@@ -61,95 +70,84 @@ nav input {
   padding: 3px 10px;
   background-color: white;
 }
-.searchbtn {
-  display: none;
-  padding: 8px 10px;
-  background-color: transparent;
-  font-size: 1.3rem;
-  border: none;
-  border-radius: 50%;
-  cursor: pointer;
+nav input:focus {
+  outline: none;
 }
-.togglebtn {
-  padding: 8px 10px;
-  font-size: 1.5rem;
+.searchbtn, .togglebtn {
   display: none;
   background-color: transparent;
-  margin-left: 10px;
+  font-size: 1.4rem;
   border: none;
-  cursor: pointer;
-  border-radius: 50%;
-}
-.active {
-  background-color: var(--primary);
-}
-.logo {
-  text-decoration: none;
-  margin-left: 20px;
   margin-right: 10px;
-  font-size: 2rem;
-  font-weight: bold;
-  color: var(--primary);
+  border-radius: 50%;
+  cursor: pointer;
 }
 
 @media (max-width: 768px) {
   nav ul {
     position: fixed;
-    display: none;
     right: 0px;
-    width: 200px;
     max-width: 50%;
     top: 72px;
-    background-color:  var(--dark);
+    margin: 0;
+    padding: 5px 50px;
+    background-color: white;
     border-bottom-left-radius: 10px;
+    border-top-left-radius: 10px;
+    display: none;
     flex-direction: column;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    text-align: center;
+    color: white;
+    box-shadow: -6px 6px 10px 0 rgba(0, 0, 0, 0.2);
   }
   nav ul.open {
     display: flex;
   }
   .togglebtn {
     display: block;
-    border: none;
-    margin-right: 20px;
   }
+  nav li {
+    margin: 10px 0;
+  }
+  .navLink {
+    color: var(--dark);
+  }
+  .active {
+    background-color: var(--primary);
+    color: white;
+  }
+  .navLink:not(.active):hover {
+    color: var(--primary);
+  }
+}
+
+@media (max-width: 600px) {
   nav form {
     display: none;
   }
   nav form.open {
     position: fixed;
-    margin: 0;
     display: flex;
-    right: 0px;
+    left: 0px;
     background-color: white;
     align-items: center;
-    padding: 10px;
+    padding: 20px 0;
     justify-content: center;
     width: 100%;
+    margin: 0;
     top: 72px;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-  }
-  nav input {
-    border: 1px solid rgb(200, 200, 200);
-    border-right: none;
-    padding: 5px 20px;
+    box-shadow: 0px 6px 10px 0 rgba(0, 0, 0, 0.2);
   }
   nav form button {
-    border: 1px solid rgb(200, 200, 200);
+    border: 1px solid rgb(180, 180, 180);
     border-left: none;
-    padding: 5px 20px;
-
+  }
+  nav form input {
+    border: 1px solid rgb(180, 180, 180);
+    border-right: none;
   }
   .searchbtn {
-    margin-left: auto;
     display: block;
-  }
-  nav li {
-    list-style: none;
-    text-decoration: none;
-    margin: 15px 0;
-    text-align: center;
-    width: 100%;
-    font-size: 1.3rem;
+    margin-left: auto;
   }
 }

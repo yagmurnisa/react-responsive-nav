@@ -7,7 +7,7 @@ function Navbar() {
   const [search, setSearch] = useState('');
   const navigate = useNavigate();
   const [showLink, setShowLink] = useState(false);
-  const [showSearch, setshowSearch] = useState(false);
+  const [showSearch, setShowSearch] = useState(false);
 
   const handleSearch = (e) => {
     e.preventDefault();
@@ -16,33 +16,33 @@ function Navbar() {
     }
   };
   return (
-    <Fragment>
     <nav>
-        <div className='logo'>BLOG</div>
-        <button className='searchbtn' onClick={()=> {setshowSearch(!showSearch); setShowLink(false)}}>{showSearch ? <FontAwesomeIcon icon={faTimes} color="white"/> : <FontAwesomeIcon icon={faSearch} color="white"/>}</button>
-        <form className={showSearch ? "open": ""} onSubmit={(e)=> handleSearch(e)}>
-            <input type='text' placeholder='Search' value={search} onChange={(e)=> {setSearch(e.target.value)}}/>
-            <button type='submit'><FontAwesomeIcon icon={faSearch} color="#141414"/></button>
-        </form>
-        <button className='togglebtn' onClick={()=> {setShowLink(!showLink); setshowSearch(false)}}>
-        {showLink ? <FontAwesomeIcon icon={faTimes} color="white"/> : <FontAwesomeIcon icon={faBars} color="white"/>}
-        </button>
-        <ul className={showLink ? "open": ""}>
-            <li>
-                <NavLink className='navLink' to='/login'>Login</NavLink>
-            </li>
-            <li>
-                <NavLink className='navLink' to='/register'>Register</NavLink>
-            </li>
-            <li>
-                <NavLink className='navLink' to='/about'>About</NavLink>
-            </li>   
-            <li>
-                <NavLink className='navLink' to='/posts'>Posts</NavLink>
-            </li>
-        </ul>
+      <div className='logo'>BLOG</div>
+      <button className='searchbtn' onClick={() => {setShowSearch(!showSearch); setShowLink(false)}}>
+        <FontAwesomeIcon icon={showSearch ? faTimes : faSearch} color="white"/>
+      </button>
+      <form className={showSearch ? "open": ""} onSubmit={(e) => handleSearch(e)}>
+        <input type='text' placeholder='Search' value={search} onChange={(e) => {setSearch(e.target.value)}}/>
+        <button type='submit'><FontAwesomeIcon icon={faSearch} color="#141414"/></button>
+      </form>
+      <button className='togglebtn' onClick={() => {setShowLink(!showLink); setShowSearch(false)}}>
+        <FontAwesomeIcon icon={showLink ? faTimes : faBars} color="white"/>
+      </button>
+      <ul className={showLink ? "open": ""}>
+        <li>
+          <NavLink className='navLink' to='/login'>Login</NavLink>
+        </li>
+        <li>
+          <NavLink className='navLink' to='/register'>Register</NavLink>
+        </li>
+        <li>
+          <NavLink className='navLink' to='/about'>About</NavLink>
+        </li>   
+        <li>
+          <NavLink className='navLink' to='/posts'>Posts</NavLink>
+        </li>
+      </ul>
     </nav>
-    </Fragment>
   )
 }
 export default Navbar;
